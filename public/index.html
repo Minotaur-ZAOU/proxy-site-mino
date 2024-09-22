@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NItrogen Proxy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>NItrogen proxy</h1>
+    <div class="logo-container"></div>
+    <div class="flex-container">
+        <div class="clock-container">
+            <canvas id="clockCanvas" class="clock" width="200" height="200"></canvas>
+        </div>
+        <div class="description">
+            <!-- ここに説明文を追加 -->
+            <p>このプロキシは、様々なウェブサイトへのアクセスを可能にします。</p>
+        </div>
+
+        <button onclick="showHint()">操作のヒント</button>
+        <button onclick="toggleClock()">時計を表示</button>
+    </div>
+    <div class="search-container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('embed')">埋め込み</div>
+            <div class="tab" onclick="showTab('history')">履歴</div>
+            <div class="tab" onclick="showTab('favorites')">お気に入り</div>
+            <div class="tab" onclick="showTab('calendar')">カレンダー</div>
+            <div class="tab" onclick="showTab('tetris')">テトリス</div>
+            <div class="tab" onclick="showTab('memo')">メモ</div>
+        </div>
+        <div id="embed-tab" class="tab-content">
+            <button onclick="embedDirect()">YoutubeUnblockerを直接埋め込む</button>
+            <input type="text" id="tiktok-url" placeholder="TikTokのURLを入力">
+            <button onclick="embedTikTok()">埋め込む</button>
+            <input type="text" id="nicovideo-url" placeholder="ニコニコ動画のURLを入力">
+            <button onclick="embedNicoNico()">埋め込む</button>
+            <input type="text" id="other-url" placeholder="指定のURLを入力">
+            <button onclick="embedOther()">埋め込む</button>
+            <button onclick="searchBing()">BINGでの検索結果を埋め込む</button>
+            <button onclick="saveData()">データを保存</button>
+            <button onclick="loadData()">データを読み込む</button>
+            <button onclick="goBack()">戻る</button>
+        </div>
+        <!-- 他のタブを追加 -->
+    </div>
+
+    <div id="embed-container"></div>
+    <div id="hint-modal" style="display: none;">
+        <h4>操作のヒント</h4>
+        <p>このサイトでは以下のことが可能です：</p>
+        <ul>
+            <li>動画を埋め込むためのURLを指定します。</li>
+            <li>履歴を確認・削除することができます。</li>
+            <li>お気に入りに動画を追加できます。</li>
+            <li>カレンダーを使用して日付を表示できます。</li>
+            <li>テトリスをプレイできます。</li>
+            <li>メモを作成・保存できます。</li>
+        </ul>
+        <button onclick="closeHint()">閉じる</button>
+    </div>
+
+    <input type="file" id="file-input" style="display:none;" accept="application/json" onchange="importData(event)">
+    
+    <script src="scripts.js"></script>
+</body>
+</html>
